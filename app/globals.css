@@ -1,0 +1,30 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-dark antialiased selection:bg-primary selection:text-white overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-manrope font-extrabold tracking-tight;
+  }
+}
+
+.glass-card {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+}
+
+.glow-emergency {
+  box-shadow: 0 0 25px rgba(220, 38, 38, 0.4);
+}
