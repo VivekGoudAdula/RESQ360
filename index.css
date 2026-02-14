@@ -6,10 +6,15 @@
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply bg-white text-dark antialiased selection:bg-primary selection:text-white overflow-x-hidden font-inter;
   }
-  h1, h2, h3, h4 {
+
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-manrope font-extrabold tracking-tight;
   }
 }
@@ -20,4 +25,67 @@
 
 .glow-emergency {
   box-shadow: 0 0 25px rgba(220, 38, 38, 0.4);
+}
+
+@keyframes heart-beat {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes gradient-x {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-heart-beat {
+  stroke-dasharray: 1000;
+  animation: heart-beat 4s linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+
+.bg-grid-medical {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
