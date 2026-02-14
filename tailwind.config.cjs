@@ -22,6 +22,7 @@ module.exports = {
       fontFamily: {
         manrope: ['Manrope', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
