@@ -1,83 +1,244 @@
 
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaApple, FaGooglePlay, FaHeart } from 'react-icons/fa';
+import React, { useEffect, useRef } from 'react';
+import { FaApple, FaGooglePlay } from 'react-icons/fa';
+import AmbulanceAnimation from './AmbulanceAnimation';
 
 const FinalCTA: React.FC = () => {
-  return (
-    <section className="py-24 lg:py-32 bg-gradient-to-br from-primary to-primary-dark relative overflow-hidden">
-      {/* Visual background elements */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-      
-      <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16 relative z-10">
-        <div className="flex-1 text-center lg:text-left space-y-8">
-          <h2 className="text-5xl lg:text-6xl text-white font-manrope leading-tight">
-            Don't Wait For An <br />
-            <span className="text-accent">Emergency.</span>
-          </h2>
-          <p className="text-white/70 text-xl max-w-xl mx-auto lg:mx-0">
-            Download RESQ360 today. It takes less than 2 minutes to set up, but it could save your life when you least expect it.
-          </p>
-          
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-6">
-            <button className="px-8 py-4 bg-white text-primary rounded-2xl font-extrabold flex items-center gap-3 hover:shadow-2xl hover:scale-105 transition-all">
-              <FaApple className="text-2xl" /> App Store
-            </button>
-            <button className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-2xl font-extrabold flex items-center gap-3 hover:bg-white/10 transition-all">
-              <FaGooglePlay className="text-xl" /> Google Play
-            </button>
-          </div>
-        </div>
+  const sectionRef = useRef<HTMLElement>(null);
 
-        {/* The Hand Catching Heart Animation */}
-        <div className="flex-1 relative flex justify-center items-center h-[400px]">
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative"
-          >
-            {/* Hand Shape (SVG Based) */}
-            <svg 
-              width="300" 
-              height="350" 
-              viewBox="0 0 200 200" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className="drop-shadow-2xl"
-            >
-              <path 
-                d="M160 180C160 180 165 140 145 110C125 80 110 90 95 85C80 80 85 60 70 50C55 40 40 50 35 70C30 90 45 115 65 130C85 145 95 180 95 180" 
-                stroke="white" 
-                strokeWidth="12" 
-                strokeLinecap="round" 
-                className="opacity-20"
-              />
-              <path 
-                d="M170 190C170 190 175 130 150 100C125 70 115 80 100 75C85 70 90 50 75 40C60 30 45 40 40 60C35 80 50 110 70 130C90 150 105 190 105 190" 
-                fill="white"
-                className="opacity-50"
-              />
-            </svg>
-            
-            {/* Catching Animation - Pulsing Heart */}
-            <motion.div 
-              initial={{ y: -200, scale: 0 }}
-              whileInView={{ y: -70, scale: 1.5 }}
-              transition={{ delay: 0.5, type: 'spring', damping: 10, stiffness: 100 }}
-              className="absolute left-[38%] top-[20%] text-emergency text-6xl animate-heart-beat drop-shadow-[0_0_20px_rgba(220,38,38,0.8)]"
-            >
-              <FaHeart />
-            </motion.div>
-          </motion.div>
-          
-          {/* Decorative Glow */}
-          <div className="absolute w-[300px] h-[300px] bg-accent/30 blur-[120px] rounded-full pointer-events-none"></div>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative py-16 lg:py-20 overflow-hidden bg-gradient-to-br from-teal-600 via-teal-700 to-teal-900 section-fade-in font-display"
+    >
+      {/* Animated Radial Pulse Background */}
+      <div className="absolute inset-0 bg-radial-pulse"></div>
+
+      {/* Animated Grid Pattern */}
+      <div className="absolute inset-0 bg-grid-pattern-teal opacity-20"></div>
+
+      {/* Floating Gradient Orbs */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-cyan-400/30 rounded-full blur-3xl animate-float-orb"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-teal-300/20 rounded-full blur-3xl animate-float-orb-reverse"></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8 text-left">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-b from-white to-teal-50 bg-clip-text text-transparent leading-tight animate-fade-in-up drop-shadow-md pb-2">
+              Don't Wait For An{' '}
+              <span className="block mt-1 text-white font-extrabold drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] tracking-wide">
+                Emergency
+              </span>
+            </h2>
+
+            <p className="text-lg md:text-xl text-teal-50/90 max-w-xl animate-fade-in-up-delay">
+              Download RESQ360 today. It could save your life.
+            </p>
+
+            {/* App Store Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-start pt-4 animate-fade-in-up-delay-2">
+              <a
+                href="#"
+                className="group relative px-8 py-4 bg-black hover:bg-gray-900 text-white rounded-2xl font-semibold flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-black/50 overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                <FaApple className="text-3xl relative z-10" />
+                <div className="text-left relative z-10">
+                  <div className="text-xs opacity-80">Download on</div>
+                  <div className="text-lg font-bold">App Store</div>
+                </div>
+              </a>
+
+              <a
+                href="#"
+                className="group relative px-8 py-4 bg-white hover:bg-gray-50 text-teal-900 rounded-2xl font-semibold flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/50 overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-teal-200/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                <FaGooglePlay className="text-2xl relative z-10" />
+                <div className="text-left relative z-10">
+                  <div className="text-xs opacity-80">Get it on</div>
+                  <div className="text-lg font-bold">Google Play</div>
+                </div>
+              </a>
+            </div>
+
+            {/* Trust Indicator */}
+            <div className="flex items-center justify-start gap-6 pt-6 text-teal-100/80 text-sm animate-fade-in-up-delay-3">
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-300 text-lg">★★★★★</span>
+                <span>4.9/5 Rating</span>
+              </div>
+              <div className="h-4 w-px bg-teal-300/30"></div>
+              <div>50,000+ Downloads</div>
+            </div>
+          </div>
+
+          {/* Right - Ambulance Animation */}
+          <AmbulanceAnimation />
+
         </div>
       </div>
-    </section>
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .section-fade-in {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .section-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        @keyframes radial-pulse {
+          0%, 100% {
+            background: radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.3) 0%, transparent 70%);
+          }
+          50% {
+            background: radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.5) 0%, transparent 80%);
+          }
+        }
+
+        .bg-radial-pulse {
+          animation: radial-pulse 4s ease-in-out infinite;
+        }
+
+        .bg-grid-pattern-teal {
+          background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+          background-size: 60px 60px;
+          animation: grid-drift 30s linear infinite;
+        }
+
+        @keyframes grid-drift {
+          0% {
+            transform: translate(0, 0);
+          }
+          100% {
+            transform: translate(60px, 60px);
+          }
+        }
+
+        @keyframes float-orb {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(40px, -40px) scale(1.1);
+          }
+        }
+
+        @keyframes float-orb-reverse {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          50% {
+            transform: translate(-30px, 30px) scale(1.15);
+          }
+        }
+
+        .animate-float-orb {
+          animation: float-orb 20s ease-in-out infinite;
+        }
+
+        .animate-float-orb-reverse {
+          animation: float-orb-reverse 25s ease-in-out infinite;
+        }
+
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in-up {
+          animation: fade-in-up 1s ease-out 0.2s both;
+        }
+
+        .animate-fade-in-up-delay {
+          animation: fade-in-up 1s ease-out 0.4s both;
+        }
+
+        .animate-fade-in-up-delay-2 {
+          animation: fade-in-up 1s ease-out 0.6s both;
+        }
+
+        .animate-fade-in-up-delay-3 {
+          animation: fade-in-up 1s ease-out 0.8s both;
+        }
+
+        @keyframes float-phone {
+          0%, 100% {
+            transform: translateY(0) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(-2deg);
+          }
+        }
+
+        .animate-float-phone {
+          animation: float-phone 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.5;
+            transform: scale(1.05);
+          }
+        }
+
+        .animate-pulse-glow {
+          animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-slow {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.8;
+          }
+        }
+
+        .animate-pulse-slow {
+          animation: pulse-slow 2s ease-in-out infinite;
+        }
+      `}} />
+    </section >
   );
 };
 
