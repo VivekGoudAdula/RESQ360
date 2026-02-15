@@ -6,10 +6,15 @@
   html {
     scroll-behavior: smooth;
   }
+
   body {
     @apply bg-white text-dark antialiased selection:bg-primary selection:text-white overflow-x-hidden font-inter;
   }
-  h1, h2, h3, h4 {
+
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-manrope font-extrabold tracking-tight;
   }
 }

@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm py-3' : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.05)] py-2.5' : 'bg-transparent py-4'
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -45,35 +45,40 @@ const Navbar: React.FC = () => {
           <img
             src="/images/logo.png"
             alt="RESQ360 Logo"
-            className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
+            className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
-            <a
+            <motion.a
               key={link.name}
               href={link.href}
+              whileHover={{ y: -2, opacity: 0.8 }}
               onClick={(e) => scrollToSection(e, link.href)}
-              className="relative text-sm font-semibold text-dark hover:text-primary transition-colors group"
+              className="relative text-[15px] font-bold text-dark tracking-tight transition-all duration-300 group"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full"></span>
-            </a>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-emergency transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
           ))}
         </nav>
 
         {/* CTA Button */}
         <div className="hidden lg:block">
-          <button className="px-6 py-2.5 bg-emergency text-white rounded-full font-bold text-sm hover:bg-red-700 transition-all hover:scale-105 active:scale-95 shadow-md">
+          <motion.button
+            whileHover={{ scale: 1.03, boxShadow: '0 0 20px rgba(220, 38, 38, 0.4)' }}
+            whileTap={{ scale: 0.97 }}
+            className="px-8 py-3 bg-emergency text-white rounded-full font-black text-sm tracking-widest uppercase shadow-[0_4px_14px_0_rgba(220,38,38,0.39)] transition-all duration-300"
+          >
             Get Started
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden text-3xl text-dark"
+          className="lg:hidden text-3xl text-dark p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <HiX /> : <HiMenuAlt3 />}
@@ -84,23 +89,23 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 lg:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="absolute top-full left-0 w-full bg-white shadow-2xl border-t border-gray-100 lg:hidden overflow-hidden"
           >
-            <div className="flex flex-col p-6 gap-4">
+            <div className="flex flex-col p-8 gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className="text-lg font-bold text-dark hover:text-primary p-2"
+                  className="text-xl font-black text-dark hover:text-emergency transition-colors tracking-tight"
                 >
                   {link.name}
                 </a>
               ))}
-              <button className="mt-4 w-full py-4 bg-emergency text-white rounded-xl font-bold shadow-lg">
+              <button className="mt-4 w-full py-4 bg-emergency text-white rounded-2xl font-black uppercase tracking-widest shadow-xl shadow-emergency/20">
                 Get Started
               </button>
             </div>
