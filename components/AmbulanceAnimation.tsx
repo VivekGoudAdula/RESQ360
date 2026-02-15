@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'lottie-react';
-import animationData from '../assets/animations/ambulance.json';
+import animationData from '../src/assets/animations/ambulance.json';
 
 const AmbulanceAnimation: React.FC = () => {
     return (

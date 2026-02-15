@@ -571,12 +571,12 @@ const Hero: React.FC = () => {
                             >
                               <div className="relative">
                                 {/* Glow background */}
-                                <div className="absolute inset-0 bg-white/20 blur-2xl rounded-full transform scale-150 animate-pulse"></div>
-                                <div className="relative w-24 h-24 flex items-center justify-center">
+                                <div className="absolute inset-0 bg-white/30 blur-3xl rounded-full transform scale-[2.5] animate-pulse"></div>
+                                <div className="relative w-32 h-32 flex items-center justify-center">
                                   <img
                                     src="/images/logo.png"
                                     alt="RESQ360 Logo"
-                                    className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+                                    className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.8)]"
                                   />
                                 </div>
                               </div>
@@ -676,18 +676,19 @@ const Hero: React.FC = () => {
 
                         {/* Road */}
                         <div className="absolute bottom-2 left-0 w-full h-12 bg-slate-800/40 flex items-center">
-                          <div className="w-full h-px border-t border-dashed border-slate-600"></div>
                         </div>
 
                         {/* Truck Simulation (From Left) */}
                         {!isLoading && (
                           <motion.div
-                            initial={{ x: -160, y: 0 }}
-                            animate={{ x: -10 }}
+                            initial={{ x: -240, y: 0 }}
+                            animate={{ x: -20 }}
                             transition={{ duration: 5, ease: "linear" }}
-                            className="absolute bottom-[-10px] left-0 w-44 h-44 z-10"
+                            className="absolute bottom-[-45px] left-0 w-64 h-64 z-10"
                           >
-                            <Lottie animationData={truckAnimation} loop={true} />
+                            <div className="w-full h-full overflow-hidden" style={{ clipPath: 'inset(0 0 15% 0)' }}>
+                              <Lottie animationData={truckAnimation} loop={true} />
+                            </div>
                           </motion.div>
                         )}
 
@@ -707,7 +708,9 @@ const Hero: React.FC = () => {
                             }}
                             className="absolute bottom-3 left-0 w-36 h-36 z-20"
                           >
-                            <Lottie animationData={bikeAnimation} loop={true} />
+                            <div className="w-full h-full overflow-hidden" style={{ clipPath: 'inset(0 0 15% 0)' }}>
+                              <Lottie animationData={bikeAnimation} loop={true} />
+                            </div>
                           </motion.div>
                         )}
 
