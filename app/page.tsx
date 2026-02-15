@@ -10,6 +10,7 @@ import Features from '../components/Features';
 import Demo from '../components/Demo';
 import FeatureGrid from '../components/FeatureGrid';
 import Ecosystem from '../components/Ecosystem';
+import Testimonials from '../components/Testimonials';
 import Security from '../components/Security';
 import Pricing from '../components/Pricing';
 import FAQ from '../components/FAQ';
@@ -46,6 +47,7 @@ export default function Home() {
 
       <FeatureGrid />
       <Ecosystem />
+      <Testimonials />
       <Security />
 
       <section id="pricing">
