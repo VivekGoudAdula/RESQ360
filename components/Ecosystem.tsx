@@ -3,64 +3,64 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    HiOutlineEye,
-    HiOutlineMapPin,
-    HiOutlineBellAlert,
+    HiOutlineTruck,
+    HiOutlineBuildingOffice2,
     HiOutlineBeaker,
     HiOutlineUserGroup,
-    HiOutlineClipboardDocumentCheck,
-    HiOutlineBuildingOffice2,
-    HiOutlineChatBubbleLeftRight
+    HiOutlineShieldCheck,
+    HiOutlineWrench,
+    HiOutlineCog,
+    HiOutlineChartBar
 } from 'react-icons/hi2';
 
 const services = [
     {
-        title: "Live Emergency Monitoring",
-        description: "Monitor real-time emergency activities and stay informed during critical situations instantly.",
-        icon: <HiOutlineEye />,
-        color: "blue"
-    },
-    {
-        title: "Real-Time GPS Tracking",
-        description: "Track responders and loved ones live with accurate location updates and fast coordination.",
-        icon: <HiOutlineMapPin />,
-        color: "teal"
-    },
-    {
-        title: "One-Tap SOS",
-        description: "Trigger an emergency alert instantly and share your location with response teams in seconds.",
-        icon: <HiOutlineBellAlert />,
+        title: "Ambulance Services",
+        description: "Instant ambulance dispatch with real-time tracking and coordination for critical emergency response.",
+        icon: <HiOutlineTruck />,
         color: "red"
     },
     {
-        title: "Blood Bank Availability",
-        description: "Check real-time blood stock in nearby hospitals and request urgently when needed.",
+        title: "Hospital Finder",
+        description: "Locate nearby hospitals with emergency facilities and get instant navigation support.",
+        icon: <HiOutlineBuildingOffice2 />,
+        color: "blue"
+    },
+    {
+        title: "Blood Banks",
+        description: "Check real-time blood availability in nearby blood banks and request urgently when needed.",
         icon: <HiOutlineBeaker />,
         color: "pink"
     },
     {
-        title: "Family Alert System",
+        title: "Family Alerts",
         description: "Automatically notify selected family members via app, SMS, and call during emergencies.",
         icon: <HiOutlineUserGroup />,
         color: "indigo"
     },
     {
-        title: "Secure Medical History",
-        description: "Store and access medical records securely for faster and safer emergency treatment.",
-        icon: <HiOutlineClipboardDocumentCheck />,
-        color: "green"
+        title: "Police Dispatch",
+        description: "Immediate police notification and dispatch for emergency situations requiring law enforcement.",
+        icon: <HiOutlineShieldCheck />,
+        color: "teal"
     },
     {
-        title: "Nearby Hospitals & Services",
-        description: "Find hospitals, police stations, and pharmacies nearby with instant navigation support.",
-        icon: <HiOutlineBuildingOffice2 />,
+        title: "Mechanic Services",
+        description: "Connect with nearby mechanics for roadside assistance and vehicle emergency repairs.",
+        icon: <HiOutlineWrench />,
         color: "orange"
     },
     {
-        title: "Emergency Chat & Support",
-        description: "Chat directly with emergency teams and receive real-time guidance before help arrives.",
-        icon: <HiOutlineChatBubbleLeftRight />,
+        title: "Towing Services",
+        description: "Quick towing service dispatch to safely transport your vehicle from the accident site.",
+        icon: <HiOutlineCog />,
         color: "cyan"
+    },
+    {
+        title: "Real-Time Analytics",
+        description: "Monitor emergency response metrics and track all stakeholder coordination in real-time.",
+        icon: <HiOutlineChartBar />,
+        color: "green"
     }
 ];
 
@@ -85,27 +85,27 @@ const Ecosystem: React.FC = () => {
     };
 
     return (
-        <section className="py-24 bg-[#F8FAFC] font-poppins relative overflow-hidden">
+        <section className="py-12 bg-white font-poppins relative overflow-hidden">
             {/* Subtle background decorative elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -ml-48 -mb-48" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-emergency/10 rounded-full blur-[100px] -mr-48 -mt-48" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-emergency/10 rounded-full blur-[100px] -ml-48 -mb-48" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="text-center mb-20 space-y-4">
+                <div className="text-center mb-12 space-y-4">
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight"
                     >
-                        Complete Emergency Ecosystem
+                        Complete Emergency <span className="text-emergency">Ecosystem</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-primary text-xl font-medium"
+                        className="text-lg text-text-secondary font-medium max-w-2xl mx-auto"
                     >
                         All the help you need, connected instantly
                     </motion.p>
@@ -126,20 +126,20 @@ const Ecosystem: React.FC = () => {
                                 y: -10,
                                 transition: { duration: 0.3 }
                             }}
-                            className="group bg-white/70 backdrop-blur-md p-8 rounded-[24px] border border-gray-100 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] hover:border-primary/20 transition-all duration-300 flex flex-col items-start text-left relative overflow-hidden"
+                            className="group bg-white backdrop-blur-md p-6 rounded-[20px] border border-gray-100 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(220,38,38,0.3)] hover:border-emergency/40 transition-all duration-300 flex flex-col items-start text-left relative overflow-hidden"
                         >
                             {/* Card Accent Glow */}
-                            <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-emergency/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                            <div className={`text-3xl mb-6 p-3 rounded-2xl bg-primary/5 text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
+                            <div className={`text-2xl mb-4 p-2.5 rounded-xl bg-emergency/10 text-emergency group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
                                 {service.icon}
                             </div>
 
-                            <h3 className="text-xl font-bold text-[#0F172A] mb-3 group-hover:text-primary transition-colors duration-300">
+                            <h3 className="text-base font-bold text-[#0F172A] mb-2 group-hover:text-emergency transition-colors duration-300">
                                 {service.title}
                             </h3>
 
-                            <p className="text-gray-500 text-sm leading-relaxed">
+                            <p className="text-gray-600 text-[14px] leading-relaxed">
                                 {service.description}
                             </p>
                         </motion.div>

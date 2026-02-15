@@ -7,10 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
   { name: 'Features', href: '#features' },
-  { name: 'How It Works', href: '#how-it-works' },
   { name: 'Testimonials', href: '#testimonials' },
   { name: 'Pricing', href: '#pricing' },
-  { name: 'Download', href: '#download' },
 ];
 
 const Navbar: React.FC = () => {
@@ -18,10 +16,20 @@ const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      // Only update state if the boolean value would change
+      if (currentScrollY > 20 && lastScrollY <= 20) {
+        setIsScrolled(true);
+      } else if (currentScrollY <= 20 && lastScrollY > 20) {
+        setIsScrolled(false);
+      }
+      lastScrollY = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -64,7 +72,9 @@ const Navbar: React.FC = () => {
       variants={navVariants}
       initial="hidden"
       animate="visible"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.05)] py-2.5' : 'bg-transparent py-4'
+      className={`fixed top-0 left-0 w-full z-50 transition-[padding,background-color,box-shadow,backdrop-filter] duration-500 ease-in-out will-change-[padding,background-color] ${isScrolled
+        ? 'bg-white/90 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.05)] py-2.5'
+        : 'bg-transparent py-4'
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -89,7 +99,6 @@ const Navbar: React.FC = () => {
 
           <div className="flex flex-col -gap-1">
             <span className="text-2xl font-black tracking-tighter text-dark leading-none group-hover:text-primary transition-colors italic">RESQ360</span>
-            <span className="text-[9px] font-black uppercase tracking-[0.4em] text-primary/80">Rescue Life</span>
           </div>
         </motion.a>
 
@@ -113,32 +122,7 @@ const Navbar: React.FC = () => {
           ))}
         </motion.nav>
 
-        {/* CTA Button */}
-        <div className="hidden lg:block relative group">
-          {/* Button Outer Glow */}
-          <div className="absolute inset-0 bg-primary/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110" />
 
-          <motion.button
-            whileHover={{ scale: 1.05, y: -2, boxShadow: '0 20px 40px -10px rgba(2, 128, 144, 0.4)' }}
-            whileTap={{ scale: 0.98 }}
-            className="relative px-10 py-4 bg-primary text-white rounded-full font-black text-[13px] tracking-[0.1em] uppercase shadow-xl shadow-primary/20 overflow-hidden group border-2 border-white/20"
-          >
-            {/* Shimmer Effect */}
-            <motion.div
-              animate={{
-                x: ['-100%', '200%'],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
-            />
-
-            <span className="relative z-10">Get Started</span>
-          </motion.button>
-        </div>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -170,20 +154,7 @@ const Navbar: React.FC = () => {
                   <div className="w-2 h-2 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               ))}
-              <button className="mt-4 w-full py-5 bg-primary text-white rounded-2xl font-black text-lg uppercase tracking-widest shadow-xl shadow-primary/20 active:scale-95 transition-transform overflow-hidden relative group">
-                <motion.div
-                  animate={{
-                    x: ['-100%', '200%'],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
-                />
-                <span className="relative z-10">Get Started</span>
-              </button>
+
             </div>
           </motion.div>
         )}

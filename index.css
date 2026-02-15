@@ -8,14 +8,14 @@
   }
 
   body {
-    @apply bg-white text-dark antialiased selection:bg-primary selection:text-white overflow-x-hidden font-inter;
+    @apply bg-white text-dark antialiased selection:bg-primary selection:text-white overflow-x-hidden font-poppins;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-manrope font-extrabold tracking-tight;
+    @apply font-poppins font-extrabold tracking-tight;
   }
 }
 

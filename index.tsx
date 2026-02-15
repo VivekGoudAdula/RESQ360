@@ -6,7 +6,7 @@ import Hero from './components/Hero';
 import TrustedBy from './components/TrustedBy';
 import Problem from './components/Problem';
 import Features from './components/Features';
-import Demo from './components/Demo';
+
 import Ecosystem from './components/Ecosystem';
 import Testimonials from './components/Testimonials';
 import Security from './components/Security';
@@ -37,9 +37,7 @@ const App = () => {
         <Features />
       </section>
 
-      <section id="how-it-works">
-        <Demo />
-      </section>
+
 
       <section id="ecosystem">
         <Ecosystem />
