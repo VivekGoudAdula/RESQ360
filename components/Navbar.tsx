@@ -34,52 +34,115 @@ const Navbar: React.FC = () => {
     }
   };
 
+  const navVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "circOut" }
+    }
+  };
+
+  const linkContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.5
+      }
+    }
+  };
+
+  const linkVariants = {
+    hidden: { y: -20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
+  };
+
   return (
-    <header
+    <motion.header
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_2px_20px_rgba(0,0,0,0.05)] py-2.5' : 'bg-transparent py-4'
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <img
-            src="/images/logo.png"
-            alt="RESQ360 Logo"
-            className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-          />
+        <motion.a
+          href="#"
+          onClick={(e) => scrollToSection(e, '#hero')}
+          className="flex items-center gap-2 group relative"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {/* Subtle Glow Background for Logo */}
+          <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150" />
 
-        </a>
+          <div className="relative z-10 p-2 rounded-2xl bg-white/10 group-hover:bg-white transition-all duration-500 shadow-sm border border-transparent group-hover:border-primary/20 group-hover:rotate-6">
+            <img
+              src="/images/logo.png"
+              alt="RESQ360 Logo"
+              className="h-10 w-auto object-contain"
+            />
+          </div>
+
+          <div className="flex flex-col -gap-1">
+            <span className="text-2xl font-black tracking-tighter text-dark leading-none group-hover:text-primary transition-colors italic">RESQ360</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.4em] text-primary/80">Rescue Life</span>
+          </div>
+        </motion.a>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-10">
+        <motion.nav
+          variants={linkContainerVariants}
+          className="hidden lg:flex items-center gap-10"
+        >
           {navLinks.map((link) => (
             <motion.a
               key={link.name}
               href={link.href}
-              whileHover={{ y: -2, opacity: 0.8 }}
+              variants={linkVariants}
+              whileHover={{ y: -2, scale: 1.05 }}
               onClick={(e) => scrollToSection(e, link.href)}
-              className="relative text-[15px] font-bold text-dark tracking-tight transition-all duration-300 group"
+              className="relative text-[15px] font-black text-dark tracking-tighter uppercase transition-all duration-300 group"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-emergency transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[3px] bg-primary rounded-full transition-all duration-300 group-hover:w-full"></span>
             </motion.a>
           ))}
-        </nav>
+        </motion.nav>
 
         {/* CTA Button */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:block relative group">
+          {/* Button Outer Glow */}
+          <div className="absolute inset-0 bg-primary/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-110" />
+
           <motion.button
-            whileHover={{ scale: 1.03, boxShadow: '0 0 20px rgba(220, 38, 38, 0.4)' }}
-            whileTap={{ scale: 0.97 }}
-            className="px-8 py-3 bg-emergency text-white rounded-full font-black text-sm tracking-widest uppercase shadow-[0_4px_14px_0_rgba(220,38,38,0.39)] transition-all duration-300"
+            whileHover={{ scale: 1.05, y: -2, boxShadow: '0 20px 40px -10px rgba(2, 128, 144, 0.4)' }}
+            whileTap={{ scale: 0.98 }}
+            className="relative px-10 py-4 bg-primary text-white rounded-full font-black text-[13px] tracking-[0.1em] uppercase shadow-xl shadow-primary/20 overflow-hidden group border-2 border-white/20"
           >
-            Get Started
+            {/* Shimmer Effect */}
+            <motion.div
+              animate={{
+                x: ['-100%', '200%'],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
+            />
+
+            <span className="relative z-10">Get Started</span>
           </motion.button>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="lg:hidden text-3xl text-dark p-2"
+          className="lg:hidden text-2xl text-dark p-2 hover:bg-gray-50 rounded-xl transition-colors"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <HiX /> : <HiMenuAlt3 />}
@@ -101,19 +164,31 @@ const Navbar: React.FC = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className="text-xl font-black text-dark hover:text-emergency transition-colors tracking-tight"
+                  className="text-xl font-bold text-dark hover:text-primary transition-colors tracking-tight flex items-center justify-between group"
                 >
                   {link.name}
+                  <div className="w-2 h-2 rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               ))}
-              <button className="mt-4 w-full py-4 bg-emergency text-white rounded-2xl font-black uppercase tracking-widest shadow-xl shadow-emergency/20">
-                Get Started
+              <button className="mt-4 w-full py-5 bg-primary text-white rounded-2xl font-black text-lg uppercase tracking-widest shadow-xl shadow-primary/20 active:scale-95 transition-transform overflow-hidden relative group">
+                <motion.div
+                  animate={{
+                    x: ['-100%', '200%'],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                />
+                <span className="relative z-10">Get Started</span>
               </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 };
 
