@@ -27,7 +27,7 @@ module.exports = {
       animation: {
         'float': 'float 6s ease-in-out infinite',
         'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
-        'scroll': 'scroll 30s linear infinite',
+        'scroll': 'scroll 50s linear infinite',
         'heart-beat': 'heartBeat 1.5s ease-in-out infinite',
       },
       keyframes: {
@@ -40,8 +40,8 @@ module.exports = {
           '50%': { boxShadow: '0 20px 50px rgba(220, 38, 38, 0.6)' },
         },
         scroll: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
         },
         heartBeat: {
           '0%, 100%': { transform: 'scale(1)' },

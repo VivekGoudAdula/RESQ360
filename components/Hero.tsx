@@ -169,7 +169,7 @@ const Hero: React.FC = () => {
   return (
     <div
       ref={ref}
-      className="relative min-h-[85vh] pt-20 pb-16 overflow-hidden flex items-center"
+      className="relative min-h-[85vh] pt-20 pb-20 overflow-hidden flex items-center"
     >
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#dc2626 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       {/* Background Decor */}
