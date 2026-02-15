@@ -49,12 +49,12 @@ const StatItem = ({ icon, value, suffix = '', prefix = '', label }: {
         {icon}
       </div>
       <div className="flex flex-col">
-        <p className="text-3xl lg:text-4xl font-black text-dark leading-none tracking-tighter flex items-center gap-0.5">
+        <p className="text-3xl lg:text-4xl font-manrope font-black text-dark leading-none tracking-tighter flex items-center gap-0.5">
           <span className="text-emergency">{prefix}</span>
           <span className="text-dark">{value.includes('.') ? count.toFixed(1) : Math.floor(count)}</span>
           <span className="text-emergency">{suffix}</span>
         </p>
-        <p className="text-[10px] text-text-secondary font-black uppercase tracking-widest leading-none mt-1 whitespace-nowrap">{label}</p>
+        <p className="text-[10px] text-text-secondary font-manrope font-black uppercase tracking-widest leading-none mt-1 whitespace-nowrap">{label}</p>
       </div>
     </div>
   );
@@ -71,6 +71,7 @@ const Hero: React.FC = () => {
   const [countdown, setCountdown] = useState(10);
   const [currentNotifyStep, setCurrentNotifyStep] = useState(0);
   const [rotatingIndex, setRotatingIndex] = useState(0);
+  const [restartTrigger, setRestartTrigger] = useState(0);
 
   // Dedicated timer for hero text rotation
   useEffect(() => {
@@ -102,7 +103,7 @@ const Hero: React.FC = () => {
         clearTimeout(crashTimer);
       };
     }
-  }, [inView]);
+  }, [inView, restartTrigger]);
 
   // Handle the countdown and transition
   useEffect(() => {
@@ -166,6 +167,18 @@ const Hero: React.FC = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
+  const handleRestart = () => {
+    setIsLoading(true);
+    setIsCrashed(false);
+    setIsRevolving(false);
+    setIsNotifying(false);
+    setIsHelpReceived(false);
+    setIsFinalRevolve(false);
+    setCountdown(10);
+    setCurrentNotifyStep(0);
+    setRestartTrigger(prev => prev + 1);
+  };
+
   return (
     <div
       ref={ref}
@@ -199,14 +212,14 @@ const Hero: React.FC = () => {
           <div className="space-y-4 w-full flex flex-col items-center">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-manrope font-black leading-none text-dark tracking-tighter uppercase whitespace-nowrap"
+              className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-black leading-none text-dark tracking-tighter uppercase whitespace-nowrap"
             >
               EVERY SECOND <span className="text-emergency">COUNTS.</span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="text-lg lg:text-2xl font-black text-dark/70 tracking-tight uppercase"
+              className="text-lg lg:text-2xl font-manrope font-black text-dark/70 tracking-tight uppercase"
             >
               AI accident <span className="text-emergency">rescue system</span>
             </motion.p>
@@ -226,7 +239,7 @@ const Hero: React.FC = () => {
                     className="flex items-center gap-3 px-6 py-2 bg-emergency/5 border-l-4 border-emergency rounded-r-xl shadow-sm"
                   >
                     <FaBolt className="text-emergency text-xl animate-pulse" />
-                    <p className="text-base lg:text-lg text-dark font-black uppercase tracking-wider whitespace-nowrap">
+                    <p className="text-base lg:text-lg text-dark font-manrope font-black uppercase tracking-wider whitespace-nowrap">
                       {[
                         "Instant alerts",
                         "automatic accident detection",
@@ -243,14 +256,15 @@ const Hero: React.FC = () => {
             <motion.button
               whileHover={{ y: -3, scale: 1.02, boxShadow: '0 15px 30px -10px rgba(220,38,38,0.4)' }}
               whileTap={{ scale: 0.98 }}
-              className="px-6 sm:px-10 py-4 bg-gradient-to-br from-emergency to-red-700 text-white rounded-xl font-black text-[10px] sm:text-xs tracking-widest uppercase shadow-xl shadow-emergency/30 transition-all"
+              className="px-6 sm:px-10 py-4 bg-gradient-to-br from-emergency to-red-700 text-white rounded-xl font-manrope font-black text-[10px] sm:text-xs tracking-widest uppercase shadow-xl shadow-emergency/30 transition-all"
             >
               Download App
             </motion.button>
             <motion.button
               whileHover={{ y: -3, backgroundColor: 'rgba(220,38,38,1)', color: '#ffffff', borderColor: 'transparent', scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="px-6 sm:px-10 py-4 bg-white text-emergency border-2 border-emergency rounded-xl font-black text-[10px] sm:text-xs tracking-widest uppercase transition-all flex items-center gap-2 group"
+              onClick={handleRestart}
+              className="px-6 sm:px-10 py-4 bg-white text-emergency border-2 border-emergency rounded-xl font-manrope font-black text-[10px] sm:text-xs tracking-widest uppercase transition-all flex items-center gap-2 group"
             >
               <FaPlay className="text-[8px] group-hover:text-white transition-colors" /> Watch Demo
             </motion.button>

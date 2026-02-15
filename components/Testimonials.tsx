@@ -89,8 +89,8 @@ const Testimonials: React.FC = () => {
   return (
     <section className="py-12 bg-white relative overflow-hidden">
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-[100px] -mr-20 -mt-20" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary/5 rounded-full blur-[80px] -ml-20 -mb-20" />
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-emergency/10 rounded-full blur-[100px] -mr-20 -mt-20" />
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-emergency/10 rounded-full blur-[80px] -ml-20 -mb-20" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 text-center mb-8">
         <div className="space-y-2">
@@ -98,16 +98,16 @@ const Testimonials: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl lg:text-7xl font-poppins font-black tracking-tight text-dark"
+            className="text-4xl lg:text-5xl font-poppins font-black tracking-tight text-[#0F172A]"
           >
-            Lives Saved, Families <span className="text-primary">Protected</span>
+            Lives Saved, Families <span className="text-emergency">Protected</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-text-secondary font-poppins font-medium max-w-2xl mx-auto"
+            className="text-lg text-text-secondary font-poppins font-medium max-w-2xl mx-auto"
           >
             Real stories from people who trust RESQ360 with their lives.
           </motion.p>
@@ -135,10 +135,10 @@ const Testimonials: React.FC = () => {
             {[...testimonials, ...testimonials].map((t, idx) => (
               <div
                 key={idx}
-                className="w-[400px] flex-shrink-0 p-10 bg-white rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_70px_-15px_rgba(220,38,38,0.1)]"
+                className="w-[400px] flex-shrink-0 p-8 bg-white rounded-[3rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col items-center group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_70px_-15px_rgba(220,38,38,0.3)]"
               >
                 {/* Stars - Centered at Top */}
-                <div className="flex text-[#FFB800] text-2xl mb-8 group-hover:scale-110 transition-transform duration-500">
+                <div className="flex text-[#FFB800] text-xl mb-6 group-hover:scale-110 transition-transform duration-500">
                   {[...Array(5)].map((_, i) => (
                     <div key={i}>
                       <HiStar />
@@ -148,25 +148,25 @@ const Testimonials: React.FC = () => {
 
                 {/* Avatar - Large and Centered */}
                 <motion.div
-                  className="w-24 h-24 rounded-full bg-gradient-to-tr from-primary to-primary-dark text-white flex items-center justify-center font-poppins font-black text-3xl shadow-xl mb-6 relative overflow-hidden"
+                  className="w-20 h-20 rounded-full bg-gradient-to-tr from-primary to-primary-dark text-white flex items-center justify-center font-poppins font-black text-2xl shadow-xl mb-5 relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-white/20 animate-pulse" />
                   <span className="relative z-10">{t.initial}</span>
                 </motion.div>
 
                 {/* Info Stack - Centered */}
-                <div className="text-center mb-8">
-                  <h4 className="font-poppins font-black text-2xl text-dark mb-1">{t.name}</h4>
-                  <p className="text-xs font-poppins font-bold text-primary tracking-widest uppercase">{t.loc}</p>
+                <div className="text-center mb-6">
+                  <h4 className="font-poppins font-black text-xl text-[#0F172A] mb-1">{t.name}</h4>
+                  <p className="text-xs font-poppins font-bold text-emergency tracking-widest uppercase">{t.loc}</p>
                 </div>
 
                 {/* Quote - Centered */}
                 <div className="relative">
-                  <span className="absolute -top-4 -left-2 text-primary opacity-20 text-4xl font-serif">"</span>
-                  <p className="text-dark text-[17px] leading-relaxed font-poppins font-medium text-center relative z-10 px-2 italic">
+                  <span className="absolute -top-4 -left-2 text-emergency opacity-20 text-4xl font-serif">"</span>
+                  <p className="text-gray-700 text-[15px] leading-relaxed font-poppins font-medium text-center relative z-10 px-2 italic">
                     {t.quote}
                   </p>
-                  <span className="absolute -bottom-6 -right-2 text-primary opacity-20 text-4xl font-serif">"</span>
+                  <span className="absolute -bottom-6 -right-2 text-emergency opacity-20 text-4xl font-serif">"</span>
                 </div>
               </div>
             ))}

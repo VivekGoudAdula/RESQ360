@@ -102,7 +102,7 @@ const Pricing: React.FC = () => {
           className="text-center mb-8"
         >
           <h2 className="text-4xl md:text-6xl font-black mb-3 text-dark tracking-tighter leading-none uppercase">
-            Choose Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary animate-gradient-x">Plan</span>
+            Choose Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-emergency via-red-500 to-emergency animate-gradient-x">Plan</span>
           </h2>
           <p className="text-text-secondary text-base md:text-lg font-medium max-w-4xl mx-auto mb-6 whitespace-nowrap lg:block hidden">
             Safety shouldn't be a luxury. Choose the plan that fits your life and keep your loved ones protected.

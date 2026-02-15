@@ -85,7 +85,7 @@ const FAQ: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-black mb-4 text-dark font-poppins tracking-tight uppercase">
-            Frequently Asked <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Questions</span>
+            Frequently Asked <span className="bg-clip-text text-transparent bg-gradient-to-r from-emergency to-red-600">Questions</span>
           </h2>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto font-poppins">
             Swipe to find answers to common questions about RESQ360.
@@ -97,13 +97,13 @@ const FAQ: React.FC = () => {
           {/* Navigation Buttons */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 md:left-10 z-50 p-3 bg-white/80 backdrop-blur rounded-full shadow-lg hover:bg-primary hover:text-white transition-all"
+            className="absolute left-4 md:left-10 z-50 p-3 bg-white/80 backdrop-blur rounded-full shadow-lg hover:bg-emergency hover:text-white transition-all"
           >
             <HiChevronLeft size={30} />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 md:right-10 z-50 p-3 bg-white/80 backdrop-blur rounded-full shadow-lg hover:bg-primary hover:text-white transition-all"
+            className="absolute right-4 md:right-10 z-50 p-3 bg-white/80 backdrop-blur rounded-full shadow-lg hover:bg-emergency hover:text-white transition-all"
           >
             <HiChevronRight size={30} />
           </button>
@@ -148,7 +148,7 @@ const FAQ: React.FC = () => {
                     transformOrigin: 'center center'
                   }}
                 >
-                  <div className={`mb-6 p-4 rounded-full ${isActive ? 'bg-primary/10 text-primary' : 'bg-gray-100 text-gray-400'}`}>
+                  <div className={`mb-6 p-4 rounded-full ${isActive ? 'bg-emergency/10 text-emergency' : 'bg-gray-100 text-gray-400'}`}>
                     <span className="text-3xl font-black">?</span>
                   </div>
                   <h3 className={`text-xl font-bold mb-4 font-poppins ${isActive ? 'text-dark' : 'text-gray-500'}`}>
@@ -169,7 +169,7 @@ const FAQ: React.FC = () => {
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === activeIndex ? 'bg-primary w-8' : 'bg-gray-300 hover:bg-gray-400'
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === activeIndex ? 'bg-emergency w-8' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
             />
           ))}
