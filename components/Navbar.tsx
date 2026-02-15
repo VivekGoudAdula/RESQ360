@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
           <img
-            src="/images/images/logo.png"
+            src="/images/logo.png"
             alt="RESQ360 Logo"
             className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
