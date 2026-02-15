@@ -8,8 +8,8 @@ import TrustedBy from './components/TrustedBy';
 import Problem from './components/Problem';
 import Features from './components/Features';
 import Demo from './components/Demo';
+import FeatureGrid from './components/FeatureGrid';
 import Ecosystem from './components/Ecosystem';
-import Testimonials from './components/Testimonials';
 import Security from './components/Security';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
@@ -17,7 +17,6 @@ import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import BackToTop from './components/BackToTop';
-import StatsCounter from './components/StatsCounter';
 
 const App = () => {
   return (
@@ -43,16 +42,8 @@ const App = () => {
         <Demo />
       </section>
 
-      <section id="ecosystem">
-        <Ecosystem />
-      </section>
-
-      <section id="testimonials">
-        <Testimonials />
-      </section>
-
-      <StatsCounter />
-
+      <FeatureGrid />
+      <Ecosystem />
       <Security />
 
       <section id="pricing">

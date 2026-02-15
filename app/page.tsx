@@ -8,8 +8,8 @@ import TrustedBy from '../components/TrustedBy';
 import Problem from '../components/Problem';
 import Features from '../components/Features';
 import Demo from '../components/Demo';
+import FeatureGrid from '../components/FeatureGrid';
 import Ecosystem from '../components/Ecosystem';
-import Testimonials from '../components/Testimonials';
 import Security from '../components/Security';
 import Pricing from '../components/Pricing';
 import FAQ from '../components/FAQ';
@@ -44,14 +44,8 @@ export default function Home() {
         <Demo />
       </section>
 
-      <section id="ecosystem">
-        <Ecosystem />
-      </section>
-
-      <section id="testimonials">
-        <Testimonials />
-      </section>
-
+      <FeatureGrid />
+      <Ecosystem />
       <Security />
 
       <section id="pricing">
