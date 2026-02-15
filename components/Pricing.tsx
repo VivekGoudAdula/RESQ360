@@ -227,17 +227,7 @@ const Pricing: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Brand highlights footer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="relative z-10 mt-12 flex flex-wrap justify-center items-center gap-12 opacity-100 transition-all duration-700"
-        >
-          <p className="text-xs md:text-sm font-black uppercase tracking-[0.25em] text-[#1e40af] drop-shadow-sm text-center">
-            Inspired by top safety infrastructures & seamless integrations
-          </p>
-        </motion.div>
+
       </div>
     </section>
   );
