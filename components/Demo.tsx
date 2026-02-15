@@ -27,7 +27,7 @@ const Demo: React.FC = () => {
           {/* Steps (Left 2 cols) */}
           <div className="lg:col-span-2 space-y-6">
             {steps.map((step, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -47,56 +47,56 @@ const Demo: React.FC = () => {
           </div>
 
           {/* Visual Simulation (Right 3 cols) */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             className="lg:col-span-3 aspect-video rounded-[40px] overflow-hidden border border-white/10 shadow-3xl relative bg-gradient-to-br from-primary-dark/50 to-dark"
           >
             {/* Visual representation of a digital map */}
             <div className="absolute inset-0 flex items-center justify-center p-8">
-               <div className="w-full h-full relative">
-                  {/* Grid Lines */}
-                  <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-                  
-                  {/* Pulsing Alert Hub */}
-                  <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-16 h-16 bg-emergency rounded-full blur-xl opacity-60 animate-pulse"></div>
-                    <div className="w-4 h-4 bg-emergency rounded-full relative z-10 shadow-[0_0_20px_#DC2626]"></div>
-                  </div>
+              <div className="w-full h-full relative">
+                {/* Grid Lines */}
+                <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
 
-                  {/* Animated Paths */}
-                  <svg className="w-full h-full relative z-0" viewBox="0 0 400 200">
-                    <motion.path 
-                      d="M100 100 L200 60 L320 120" 
-                      stroke="#02C39A" 
-                      strokeWidth="2" 
-                      fill="none" 
-                      strokeDasharray="8,8"
-                      initial={{ pathLength: 0 }}
-                      whileInView={{ pathLength: 1 }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                    />
-                    <motion.path 
-                      d="M100 100 L180 140 L280 160" 
-                      stroke="#028090" 
-                      strokeWidth="2" 
-                      fill="none" 
-                      strokeDasharray="8,8"
-                      initial={{ pathLength: 0 }}
-                      whileInView={{ pathLength: 1 }}
-                      transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                    />
-                    {/* Destination Nodes */}
-                    <circle cx="320" cy="120" r="5" fill="#02C39A" />
-                    <circle cx="280" cy="160" r="5" fill="#028090" />
-                  </svg>
+                {/* Pulsing Alert Hub */}
+                <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-16 h-16 bg-emergency rounded-full blur-xl opacity-60 animate-pulse"></div>
+                  <div className="w-4 h-4 bg-emergency rounded-full relative z-10 shadow-[0_0_20px_#DC2626]"></div>
+                </div>
 
-                  {/* Node Labels */}
-                  <div className="absolute top-[30%] right-[15%] text-accent text-[10px] font-bold uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full border border-accent/20">Nearest Trauma Center</div>
-                  <div className="absolute bottom-[20%] right-[25%] text-primary text-[10px] font-bold uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Police Response</div>
-               </div>
+                {/* Animated Paths */}
+                <svg className="w-full h-full relative z-0" viewBox="0 0 400 200">
+                  <motion.path
+                    d="M100 100 L200 60 L320 120"
+                    stroke="#02C39A"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeDasharray="8,8"
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  />
+                  <motion.path
+                    d="M100 100 L180 140 L280 160"
+                    stroke="#028090"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeDasharray="8,8"
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                  />
+                  {/* Destination Nodes */}
+                  <circle cx="320" cy="120" r="5" fill="#02C39A" />
+                  <circle cx="280" cy="160" r="5" fill="#028090" />
+                </svg>
+
+                {/* Node Labels */}
+                <div className="absolute top-[30%] right-[15%] text-accent text-[10px] font-bold uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full border border-accent/20">Nearest Trauma Center</div>
+                <div className="absolute bottom-[20%] right-[25%] text-primary text-[10px] font-bold uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Police Response</div>
+              </div>
             </div>
-            
+
             {/* UI Overlay */}
             <div className="absolute inset-0 pointer-events-none flex flex-col justify-between p-8">
               <div className="flex justify-end">
@@ -108,7 +108,7 @@ const Demo: React.FC = () => {
 
               <div className="flex items-center gap-4 bg-black/60 backdrop-blur-md self-start p-4 rounded-3xl border border-white/10 shadow-2xl">
                 <div className="w-10 h-10 bg-emergency/20 rounded-2xl flex items-center justify-center text-emergency text-xl">
-                   📡
+                  📡
                 </div>
                 <div className="space-y-1">
                   <p className="text-[10px] text-white/50 font-black uppercase tracking-widest">Protocol Delta</p>

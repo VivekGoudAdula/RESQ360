@@ -40,8 +40,8 @@ module.exports = {
           '50%': { boxShadow: '0 20px 50px rgba(220, 38, 38, 0.6)' },
         },
         scroll: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
         },
         heartBeat: {
           '0%, 100%': { transform: 'scale(1)' },
