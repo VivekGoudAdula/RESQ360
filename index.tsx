@@ -17,6 +17,7 @@ import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import BackToTop from './components/BackToTop';
+import StatsCounter from './components/StatsCounter';
 
 const App = () => {
   return (
@@ -49,6 +50,8 @@ const App = () => {
       <section id="testimonials">
         <Testimonials />
       </section>
+
+      <StatsCounter />
 
       <Security />
 

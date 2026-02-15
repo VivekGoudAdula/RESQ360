@@ -189,27 +189,88 @@
   mask-image: linear-gradient(to bottom, transparent, black, transparent);
 }
 
-@keyframes light-sweep {
+@keyframes wave-move {
   0% {
-    transform: translateX(-100%) skewX(-15deg);
-    opacity: 0;
+    transform: translateX(0) scaleY(1);
   }
 
-  20% {
-    opacity: 0.2;
-  }
-
-  80% {
-    opacity: 0.2;
+  50% {
+    transform: translateX(-25%) scaleY(1.1);
   }
 
   100% {
-    transform: translateX(200%) skewX(-15deg);
-    opacity: 0;
+    transform: translateX(-50%) scaleY(1);
   }
 }
 
-.light-sweep {
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
-  animation: light-sweep 10s linear infinite;
+.wave-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 50% 100%, rgba(2, 195, 154, 0.2) 0%, transparent 50%),
+    linear-gradient(to bottom, transparent, rgba(2, 128, 144, 0.1));
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='black' d='M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,165.3C672,139,768,117,864,128C960,139,1056,181,1152,197.3C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  mask-repeat: repeat-x;
+  mask-size: 50% 100%;
+  animation: wave-move 20s linear infinite;
+}
+
+@keyframes pulse-stat {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pulse-stat {
+  animation: pulse-stat 2s ease-in-out infinite;
+}
+
+@keyframes border-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.border-shimmer {
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.2), rgba(59, 130, 246, 0.1));
+  background-size: 200% 200%;
+  animation: border-shimmer 4s ease infinite;
+}
+
+@keyframes float-icon {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hover-float-icon:hover .card-icon {
+  animation: float-icon 2s ease-in-out infinite;
 }

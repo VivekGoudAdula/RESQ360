@@ -40,9 +40,9 @@ const TiltCard = ({ children, className }: { children: React.ReactNode, classNam
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      className={`relative ${className} perspective-1000`}
+      className={`relative flex flex-col ${className} perspective-1000`}
     >
-      <div style={{ transform: "translateZ(50px)" }}>
+      <div className="flex-1 flex flex-col" style={{ transform: "translateZ(50px)" }}>
         {children}
       </div>
     </motion.div>
@@ -76,21 +76,18 @@ const Security: React.FC = () => {
     { icon: <LuNetwork />, top: '25%', left: '90%', delay: 2 },
     { icon: <LuDatabase />, top: '65%', left: '5%', delay: 4 },
     { icon: <LuShieldCheck />, top: '75%', left: '85%', delay: 1 },
+    { icon: <LuLock />, top: '40%', left: '50%', delay: 3 },
   ];
 
   return (
-    <section className="py-20 bg-[#020617] relative overflow-hidden">
-      {/* "Great" Background Elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Nebula Blobs */}
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary rounded-full nebula-blob" />
-        <div className="absolute bottom-[0%] right-[-5%] w-[35%] h-[35%] bg-indigo-600 rounded-full nebula-blob" style={{ animationDelay: '-5s' }} />
+    <section className="py-12 bg-[#020617] relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden text-white">
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-primary/20 rounded-full nebula-blob blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-600/20 rounded-full nebula-blob blur-[120px]" style={{ animationDelay: '-8s' }} />
 
-        {/* Cyber Grid */}
-        <div className="absolute inset-x-0 bottom-0 h-full cyber-grid opacity-20" />
+        <div className="absolute inset-x-0 bottom-0 h-full cyber-grid opacity-10" />
 
-        {/* Light Sweep */}
-        <div className="absolute inset-0 light-sweep opacity-30" />
+
 
         {/* Floating Icons */}
         {floatingNodes.map((node, i) => (
@@ -98,18 +95,19 @@ const Security: React.FC = () => {
             key={i}
             initial={{ opacity: 0 }}
             animate={{
-              opacity: [0.1, 0.4, 0.1],
-              y: [0, -30, 0],
-              rotate: [0, 360],
+              opacity: [0, 0.3, 0],
+              y: [0, -50, 0],
+              x: [0, 20, 0],
+              rotate: [0, 180, 360],
             }}
             transition={{
-              duration: 12 + i * 2,
+              duration: 15 + i * 3,
               repeat: Infinity,
               ease: "easeInOut",
               delay: node.delay
             }}
             style={{ top: node.top, left: node.left }}
-            className="absolute text-4xl text-primary/30"
+            className="absolute text-5xl text-primary/40"
           >
             {node.icon}
           </motion.div>
@@ -117,7 +115,7 @@ const Security: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-10 space-y-3">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -142,46 +140,48 @@ const Security: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg max-w-2xl mx-auto font-poppins font-medium tracking-wide"
+            className="text-white/70 text-xl max-w-2xl mx-auto font-poppins font-medium tracking-wide"
           >
             Bank-level security for your emergency data
           </motion.p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {features.map((feature, index) => (
-            <TiltCard key={index} className="flex-1 group h-full">
+            <TiltCard key={index} className="group hover-float-icon">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.1,
-                  ease: "easeOut"
-                }}
-                className="h-full p-8 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:bg-white/[0.08]"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="h-full p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl transition-all duration-700 hover:bg-white/[0.08] hover:border-primary/40 flex flex-col relative overflow-hidden"
               >
-                <div className="relative mb-8">
-                  <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-125 opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+                {/* Animated shimmer overlay */}
+                <div className="absolute inset-0 border-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                <div className="relative mb-6">
+                  <div className="absolute inset-0 bg-primary/30 blur-[40px] rounded-full scale-150 opacity-0 group-hover:opacity-60 transition-all duration-700" />
 
                   <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="w-20 h-20 bg-primary text-white rounded-3xl shadow-2xl flex items-center justify-center text-4xl relative z-10"
+                    className="w-24 h-24 bg-primary text-white rounded-[2rem] shadow-2xl flex items-center justify-center text-5xl relative z-10 card-icon"
                     style={{
-                      boxShadow: '0 15px 30px -5px rgba(59, 130, 246, 0.4)',
+                      boxShadow: '0 20px 40px -10px rgba(59, 130, 246, 0.5)',
                     }}
                   >
                     {feature.icon}
                   </motion.div>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="px-2.5 py-1 bg-primary/20 text-primary text-[10px] font-poppins font-black tracking-widest rounded-full inline-block">
-                    {feature.tag}
+                <div className="space-y-6 flex-1 flex flex-col justify-center">
+                  <div>
+                    <div className="px-3 py-1 bg-primary/20 text-primary text-[10px] font-poppins font-black tracking-widest rounded-full inline-block mb-4">
+                      {feature.tag}
+                    </div>
+                    <h3 className="text-3xl font-poppins font-black tracking-tight text-white mb-4 leading-tight group-hover:text-primary transition-colors duration-500">
+                      {feature.title}
+                    </h3>
                   </div>
-                  <h3 className="text-2xl font-poppins font-bold tracking-tight text-white">{feature.title}</h3>
-                  <p className="text-gray-400 text-base leading-relaxed font-poppins">
+                  <p className="text-white/70 text-[18px] leading-relaxed font-poppins">
                     {feature.description}
                   </p>
                 </div>
@@ -190,28 +190,29 @@ const Security: React.FC = () => {
           ))}
         </div>
 
-        {/* Certifications Bar */}
+        {/* Improved Certifications Bar */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-20 pt-10 border-t border-white/5"
+          transition={{ delay: 0.6 }}
+          className="mt-16 pt-8 border-t border-white/10"
         >
-          <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
+          <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-20">
             {[
-              { name: "SOC2", sub: "Type II" },
-              { name: "ISO 27001", sub: "Global" },
-              { name: "HIPAA", sub: "Healthcare" },
-              { name: "GDPR", sub: "Privacy" }
+              { name: "SOC2", sub: "Type II Certified" },
+              { name: "ISO 27001", sub: "Global Standard" },
+              { name: "HIPAA", sub: "Healthcare Ready" },
+              { name: "GDPR", sub: "Privacy Minded" }
             ].map((cert, i) => (
-              <div key={i} className="flex flex-col items-center group">
-                <span className="text-xl font-black font-poppins text-white/20 group-hover:text-primary transition-colors cursor-default tracking-tighter uppercase shrink-0">
+              <div key={i} className="flex flex-col items-center group relative cursor-default">
+                <span className="text-4xl font-poppins font-black text-white group-hover:text-primary transition-all duration-500 tracking-tighter uppercase shrink-0 px-2">
                   {cert.name}
                 </span>
-                <span className="text-[9px] font-bold font-poppins text-white/40 opacity-0 group-hover:opacity-100 transition-all uppercase tracking-[0.2em] -mt-1 shrink-0">
+                <span className="text-[12px] font-bold font-poppins text-white/70 group-hover:text-white transition-all duration-500 uppercase tracking-[0.3em] mt-1 shrink-0">
                   {cert.sub}
                 </span>
+                <div className="absolute -bottom-2 left-0 right-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               </div>
             ))}
           </div>
