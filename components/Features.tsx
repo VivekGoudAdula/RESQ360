@@ -50,21 +50,21 @@ const Features: React.FC = () => {
   };
 
   return (
-    <section ref={ref} className="py-24 bg-white">
+    <section ref={ref} className="pt-12 pb-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16">
           <h2 className="text-4xl lg:text-5xl mb-6">Built for <span className="text-primary">Reliability.</span></h2>
           <p className="text-text-secondary text-lg max-w-2xl">Every feature is designed with one goal: to shave off precious seconds from the response time when every second counts.</p>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={container}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
           className="grid md:grid-cols-2 gap-8"
         >
           {featureList.map((f, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               variants={item}
               whileHover={{ x: 10 }}
