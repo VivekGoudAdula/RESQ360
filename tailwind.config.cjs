@@ -27,7 +27,7 @@ module.exports = {
       animation: {
         'float': 'float 6s ease-in-out infinite',
         'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
-        'scroll': 'scroll 30s linear infinite',
+        'scroll': 'scroll 50s linear infinite',
         'heart-beat': 'heartBeat 1.5s ease-in-out infinite',
       },
       keyframes: {
