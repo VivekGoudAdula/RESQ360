@@ -44,17 +44,17 @@ const StatItem = ({ icon, value, suffix = '', prefix = '', label }: {
   }, [target]);
 
   return (
-    <div className="flex items-center gap-3">
-      <div className="w-10 h-10 rounded-lg bg-emergency/5 flex items-center justify-center text-emergency border border-emergency/10 shadow-sm shrink-0">
-        {icon}
+    <div className="flex items-center gap-2 sm:gap-3">
+      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-emergency/5 flex items-center justify-center text-emergency border border-emergency/10 shadow-sm shrink-0">
+        {React.cloneElement(icon as React.ReactElement, { className: 'text-base sm:text-xl' })}
       </div>
-      <div className="flex flex-col">
-        <p className="text-3xl lg:text-4xl font-manrope font-black text-dark leading-none tracking-tighter flex items-center gap-0.5">
+      <div className="flex flex-col min-w-0">
+        <p className="text-2xl sm:text-3xl lg:text-4xl font-manrope font-black text-dark leading-none tracking-tighter flex items-center gap-0.5">
           <span className="text-emergency">{prefix}</span>
           <span className="text-dark">{value.includes('.') ? count.toFixed(1) : Math.floor(count)}</span>
           <span className="text-emergency">{suffix}</span>
         </p>
-        <p className="text-[10px] text-text-secondary font-manrope font-black uppercase tracking-widest leading-none mt-1 whitespace-nowrap">{label}</p>
+        <p className="text-[8px] sm:text-[10px] text-text-secondary font-manrope font-black uppercase tracking-widest leading-none mt-1 truncate">{label}</p>
       </div>
     </div>
   );
@@ -182,7 +182,7 @@ const Hero: React.FC = () => {
   return (
     <div
       ref={ref}
-      className="relative min-h-[85vh] pt-20 pb-20 overflow-hidden flex items-center"
+      className="relative min-h-screen lg:min-h-[85vh] pt-28 lg:pt-32 pb-16 lg:pb-20 overflow-hidden flex items-center"
     >
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#dc2626 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       {/* Background Decor */}
@@ -207,12 +207,12 @@ const Hero: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="space-y-8 relative z-10 flex flex-col items-center text-center mt-12 lg:max-w-xl lg:ml-auto lg:pl-24"
+          className="space-y-6 sm:space-y-8 relative z-10 flex flex-col items-center text-center mt-4 lg:mt-12 lg:max-w-xl lg:ml-auto lg:pl-24"
         >
           <div className="space-y-4 w-full flex flex-col items-center">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-poppins font-black leading-none text-dark tracking-tighter uppercase whitespace-nowrap"
+              className="text-3xl sm:text-5xl lg:text-6xl font-poppins font-black leading-tight sm:leading-none text-dark tracking-tighter uppercase"
             >
               EVERY SECOND <span className="text-emergency">COUNTS.</span>
             </motion.h1>
@@ -228,7 +228,7 @@ const Hero: React.FC = () => {
               variants={itemVariants}
               className="flex items-center justify-center w-full"
             >
-              <div className="h-14 flex flex-col justify-center">
+              <div className="min-h-[4rem] flex flex-col justify-center">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={rotatingIndex}
@@ -238,8 +238,8 @@ const Hero: React.FC = () => {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="flex items-center gap-3 px-6 py-2 bg-emergency/5 border-l-4 border-emergency rounded-r-xl shadow-sm"
                   >
-                    <FaBolt className="text-emergency text-xl animate-pulse" />
-                    <p className="text-base lg:text-lg text-dark font-manrope font-black uppercase tracking-wider whitespace-nowrap">
+                    <FaBolt className="text-emergency text-lg sm:text-xl animate-pulse shrink-0" />
+                    <p className="text-sm sm:text-base lg:text-lg text-dark font-manrope font-black uppercase tracking-wider">
                       {[
                         "Instant alerts",
                         "automatic accident detection",
@@ -257,35 +257,35 @@ const Hero: React.FC = () => {
               whileHover={{ y: -3, backgroundColor: 'rgba(220,38,38,1)', color: '#ffffff', borderColor: 'transparent', scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleRestart}
-              className="px-6 sm:px-10 py-4 bg-white text-emergency border-2 border-emergency rounded-xl font-manrope font-black text-[10px] sm:text-xs tracking-widest uppercase transition-all flex items-center gap-2 group"
+              className="px-8 sm:px-10 py-4 bg-white text-emergency border-2 border-emergency rounded-xl font-manrope font-black text-xs tracking-widest uppercase transition-all flex items-center gap-3 group shadow-lg shadow-emergency/5"
             >
-              <FaPlay className="text-[8px] group-hover:text-white transition-colors" /> Watch Demo
+              <FaPlay className="text-[10px] group-hover:text-white transition-colors" /> Watch Demo
             </motion.button>
           </motion.div>
 
           {/* Stats Section */}
-          <motion.div variants={itemVariants} className="pt-8 flex flex-row justify-center items-center gap-4 lg:gap-14 border-t border-gray-100 w-full overflow-visible">
+          <motion.div variants={itemVariants} className="pt-6 sm:pt-8 flex flex-wrap justify-center items-center gap-y-6 gap-x-4 sm:gap-x-12 lg:gap-14 border-t border-gray-100 w-full overflow-visible">
             <StatItem
-              icon={<MdSpeed className="text-xl" />}
+              icon={<MdSpeed />}
               value="30"
               suffix="s"
               prefix="<"
               label="Response Time"
             />
 
-            <div className="h-8 w-[1px] bg-gray-100 shrink-0"></div>
+            <div className="h-8 w-[1px] bg-gray-100 shrink-0 hidden sm:block"></div>
 
             <StatItem
-              icon={<FaHeart className="text-lg" />}
+              icon={<FaHeart />}
               value="12"
               suffix="K+"
               label="Lives Saved"
             />
 
-            <div className="h-8 w-[1px] bg-gray-100 shrink-0"></div>
+            <div className="h-8 w-[1px] bg-gray-100 shrink-0 hidden sm:block"></div>
 
             <StatItem
-              icon={<FaCheckCircle className="text-lg" />}
+              icon={<FaCheckCircle />}
               value="4.9"
               suffix="/5"
               label="App Rating"
