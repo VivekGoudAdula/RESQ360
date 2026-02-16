@@ -182,7 +182,7 @@ const Hero: React.FC = () => {
   return (
     <div
       ref={ref}
-      className="relative min-h-screen lg:min-h-[85vh] pt-28 lg:pt-32 pb-16 lg:pb-20 overflow-hidden flex items-center"
+      className="relative min-h-screen lg:min-h-[85vh] pt-12 lg:pt-24 pb-16 lg:pb-20 overflow-hidden flex items-start lg:items-center"
     >
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#dc2626 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       {/* Background Decor */}
@@ -207,7 +207,7 @@ const Hero: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="space-y-6 sm:space-y-8 relative z-10 flex flex-col items-center text-center mt-4 lg:mt-12 lg:max-w-xl lg:ml-auto lg:pl-24"
+          className="space-y-6 sm:space-y-8 relative z-10 flex flex-col items-center text-center mt-0 lg:mt-8 lg:max-w-xl lg:ml-auto lg:pl-24"
         >
           <div className="space-y-4 w-full flex flex-col items-center">
             <motion.h1
@@ -282,14 +282,7 @@ const Hero: React.FC = () => {
               label="Lives Saved"
             />
 
-            <div className="h-8 w-[1px] bg-gray-100 shrink-0 hidden sm:block"></div>
 
-            <StatItem
-              icon={<FaCheckCircle />}
-              value="4.9"
-              suffix="/5"
-              label="App Rating"
-            />
           </motion.div>
         </motion.div>
         {/* </motion.div> */}
