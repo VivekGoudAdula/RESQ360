@@ -7,7 +7,6 @@ import Hero from '../components/Hero';
 import TrustedBy from '../components/TrustedBy';
 import Problem from '../components/Problem';
 import Features from '../components/Features';
-
 import FeatureGrid from '../components/FeatureGrid';
 import Ecosystem from '../components/Ecosystem';
 import Testimonials from '../components/Testimonials';
@@ -40,8 +39,6 @@ export default function Home() {
       <section id="features">
         <Features />
       </section>
-
-
 
       <FeatureGrid />
       <Ecosystem />

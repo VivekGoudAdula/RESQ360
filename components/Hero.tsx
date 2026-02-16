@@ -254,13 +254,6 @@ const Hero: React.FC = () => {
 
           <motion.div variants={itemVariants} className="flex flex-row items-center justify-center gap-4 py-2 w-full">
             <motion.button
-              whileHover={{ y: -3, scale: 1.02, boxShadow: '0 15px 30px -10px rgba(220,38,38,0.4)' }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 sm:px-10 py-4 bg-gradient-to-br from-emergency to-red-700 text-white rounded-xl font-manrope font-black text-[10px] sm:text-xs tracking-widest uppercase shadow-xl shadow-emergency/30 transition-all"
-            >
-              Download App
-            </motion.button>
-            <motion.button
               whileHover={{ y: -3, backgroundColor: 'rgba(220,38,38,1)', color: '#ffffff', borderColor: 'transparent', scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleRestart}

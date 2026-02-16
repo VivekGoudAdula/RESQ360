@@ -30,7 +30,7 @@ const FinalCTA: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 lg:py-20 overflow-hidden bg-gradient-to-br from-teal-600 via-teal-700 to-teal-900 section-fade-in font-display"
+      className="relative py-8 lg:py-10 overflow-hidden bg-gradient-to-br from-teal-600 via-teal-700 to-teal-900 section-fade-in font-display"
     >
       {/* Animated Radial Pulse Background */}
       <div className="absolute inset-0 bg-radial-pulse"></div>
@@ -58,41 +58,9 @@ const FinalCTA: React.FC = () => {
             </p>
 
             {/* App Store Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-start pt-4 animate-fade-in-up-delay-2">
-              <a
-                href="#"
-                className="group relative px-8 py-4 bg-black hover:bg-gray-900 text-white rounded-2xl font-semibold flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-black/50 overflow-hidden"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-                <FaApple className="text-3xl relative z-10" />
-                <div className="text-left relative z-10">
-                  <div className="text-xs opacity-80">Download on</div>
-                  <div className="text-lg font-bold">App Store</div>
-                </div>
-              </a>
+            {/* Removed App Store and Google Play download buttons */}
 
-              <a
-                href="#"
-                className="group relative px-8 py-4 bg-white hover:bg-gray-50 text-teal-900 rounded-2xl font-semibold flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/50 overflow-hidden"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-teal-200/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-                <FaGooglePlay className="text-2xl relative z-10" />
-                <div className="text-left relative z-10">
-                  <div className="text-xs opacity-80">Get it on</div>
-                  <div className="text-lg font-bold">Google Play</div>
-                </div>
-              </a>
-            </div>
-
-            {/* Trust Indicator */}
-            <div className="flex items-center justify-start gap-6 pt-6 text-teal-100/80 text-sm animate-fade-in-up-delay-3">
-              <div className="flex items-center gap-2">
-                <span className="text-yellow-300 text-lg">★★★★★</span>
-                <span>4.9/5 Rating</span>
-              </div>
-              <div className="h-4 w-px bg-teal-300/30"></div>
-              <div>50,000+ Downloads</div>
-            </div>
+            {/* Trust Indicator removed as requested */}
           </div>
 
           {/* Right - Ambulance Animation */}

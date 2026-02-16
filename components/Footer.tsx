@@ -34,21 +34,25 @@ const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer ref={footerRef} className="relative z-20 pt-16 pb-8 bg-gradient-to-b from-teal-900 via-gray-900 to-gray-950 text-white footer-fade-in">
-      {/* Animated Background Grid */}
+
+    <footer ref={footerRef} className="relative z-20 pt-16 pb-8 bg-gradient-to-br from-white via-red-50 to-red-100 text-black footer-fade-in font-display overflow-hidden">
+      {/* Animated Light Red Radial Pulse Background */}
+      <div className="absolute inset-0 bg-gradient-radial from-red-100/60 via-white/90 to-white"></div>
+
+      {/* Animated Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
 
-      {/* Animated Gradient Orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl animate-float-slow pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl animate-float-slower pointer-events-none"></div>
+      {/* Floating Red Orbs */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-red-200/40 rounded-full blur-3xl animate-float-orb pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-red-300/20 rounded-full blur-3xl animate-float-orb-reverse pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Column 1: Brand */}
           <div className="space-y-6 footer-column">
             <div className="flex items-center gap-3 group">
-              <span className="text-5xl animate-pulse-glow">⚡</span>
-              <h3 className="text-4xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
+              <img src="/images/logo.png" alt="RESQ360 Logo" className="h-12 w-12 object-contain animate-pulse-glow" />
+              <h3 className="text-4xl font-bold bg-gradient-to-r from-red-600 via-black to-red-400 bg-clip-text text-transparent animate-gradient-x">
                 RESQ360
               </h3>
             </div>
@@ -78,9 +82,9 @@ const Footer: React.FC = () => {
 
           {/* Column 2: Product */}
           <div className="footer-column">
-            <h4 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider relative inline-block">
+            <h4 className="font-semibold text-black mb-6 text-sm uppercase tracking-wider relative inline-block">
               Product
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-black transition-all duration-300 group-hover:w-full"></span>
             </h4>
             <ul className="space-y-3.5 text-sm">
               {['Features', 'How It Works', 'Pricing', 'Download', 'Security'].map((item, idx) => (
@@ -89,7 +93,7 @@ const Footer: React.FC = () => {
                     href="#"
                     className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-flex items-center gap-2 group relative"
                   >
-                    <span className="w-0 h-0.5 bg-gradient-to-r from-indigo-400 to-purple-400 transition-all duration-300 group-hover:w-4"></span>
+                    <span className="w-0 h-0.5 bg-gradient-to-r from-red-500 to-black transition-all duration-300 group-hover:w-4"></span>
                     <span className="relative overflow-hidden">
                       {item}
                       <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
@@ -102,9 +106,9 @@ const Footer: React.FC = () => {
 
           {/* Column 3: Company */}
           <div className="footer-column">
-            <h4 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider relative inline-block">
+            <h4 className="font-semibold text-black mb-6 text-sm uppercase tracking-wider relative inline-block">
               Company
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-black transition-all duration-300 group-hover:w-full"></span>
             </h4>
             <ul className="space-y-3.5 text-sm">
               {['About Us', 'Careers', 'Press Kit', 'Blog', 'Contact'].map((item, idx) => (
@@ -113,7 +117,7 @@ const Footer: React.FC = () => {
                     href="#"
                     className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-flex items-center gap-2 group relative"
                   >
-                    <span className="w-0 h-0.5 bg-gradient-to-r from-indigo-400 to-purple-400 transition-all duration-300 group-hover:w-4"></span>
+                    <span className="w-0 h-0.5 bg-gradient-to-r from-red-500 to-black transition-all duration-300 group-hover:w-4"></span>
                     <span className="relative overflow-hidden">
                       {item}
                       <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
@@ -126,9 +130,9 @@ const Footer: React.FC = () => {
 
           {/* Column 4: Legal */}
           <div className="footer-column">
-            <h4 className="font-semibold text-white mb-6 text-sm uppercase tracking-wider relative inline-block">
+            <h4 className="font-semibold text-black mb-6 text-sm uppercase tracking-wider relative inline-block">
               Legal
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-400 to-purple-400 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 to-black transition-all duration-300 group-hover:w-full"></span>
             </h4>
             <ul className="space-y-3.5 text-sm">
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'GDPR'].map((item, idx) => (
@@ -137,7 +141,7 @@ const Footer: React.FC = () => {
                     href="#"
                     className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-2 inline-flex items-center gap-2 group relative"
                   >
-                    <span className="w-0 h-0.5 bg-gradient-to-r from-indigo-400 to-purple-400 transition-all duration-300 group-hover:w-4"></span>
+                    <span className="w-0 h-0.5 bg-gradient-to-r from-red-500 to-black transition-all duration-300 group-hover:w-4"></span>
                     <span className="relative overflow-hidden">
                       {item}
                       <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
@@ -150,11 +154,11 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm relative">
-          <p className="text-gray-400 hover:text-white transition-colors duration-300">
+        <div className="pt-8 border-t border-red-200 flex flex-col md:flex-row justify-between items-center gap-4 text-sm relative">
+          <p className="text-gray-700 hover:text-black transition-colors duration-300">
             © 2024 RESQ360. All rights reserved.
           </p>
-          <p className="text-gray-400 flex items-center gap-2 hover:text-white transition-colors duration-300">
+          <p className="text-gray-700 flex items-center gap-2 hover:text-black transition-colors duration-300">
             Made in India
           </p>
         </div>
